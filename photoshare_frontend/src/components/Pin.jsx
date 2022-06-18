@@ -27,7 +27,7 @@ const Pin = ({pin:{postedBy, image, _id, destination, save}}) => {
 
     // 1, [1,2,3]->[1].length ->1 ->!1->false ->!false ->true
     //4, [1,2,3]->[0].length->0 -> !0->true ->!false->false
-     alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
+    //  alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
 
     const savePin=(id)=>{
         if(!alreadySaved.length===0){
