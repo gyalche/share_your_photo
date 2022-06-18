@@ -4,7 +4,9 @@ import {IoMdAdd, IoMdSearch} from 'react-icons/io';
 const Navbar = ({searchTerm, setSearchTerm, user}) => {
 
   const navigate=useNavigate();
-  if(!user) return null;
+  if(!user) return(
+    navigate('/login')
+  );
 
   return (
     <div className="flex gap-2 md:gap-5 w-full mt-5">

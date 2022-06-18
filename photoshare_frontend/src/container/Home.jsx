@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {HiMenu} from 'react-icons/hi';
 import {AiFillCloseCircle} from 'react-icons/ai';
-import {Link, Route, Routes} from 'react-router-dom';
+import {Link, Route, Routes, useNavigate} from 'react-router-dom';
 import {Sidebar, UserProfile} from '../components';
 import {client} from '../client';
 import Pins from './Pins'
@@ -15,13 +15,18 @@ const Home = () => {
   const scrollRef=useRef(null);
 
   const userInfo=localStorage.getItem('user')!=='undefined' ? JSON.parse(localStorage.getItem('user')):localStorage.clear();
-
+  const navigate=useNavigate();
   console.log(userInfo);
   useEffect(() => {
-    const query = userQuery(userInfo?.googleId);
+    if(!userInfo){
+      navigate('/login')
+    }else{
+      const query = userQuery(userInfo?.googleId);
     client.fetch(query).then((data) => {
       setUser(data[0])
     })
+    }
+    
   }, [userInfo?._googleId]);
 
   useEffect(() => {
