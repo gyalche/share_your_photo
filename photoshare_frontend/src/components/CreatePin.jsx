@@ -65,9 +65,9 @@ const CreatePin = ({user}) => {
 
       }
      client.create(doct).then((e)=>{
-       e.preventDefault();
-      //  navigate('/')
-      window.location.replace('/');
+      //  e.preventDefault();
+       navigate('/')
+      // window.location.replace('/');
      })
     }
     else{
